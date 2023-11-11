@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\MotorcycleController;
 use App\Http\Controllers\TruckController;
