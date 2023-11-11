@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('trucks', function (Blueprint $table) {
             $table->id('truck_id');
-            $table->integer('wheel_count');
-            $table->integer('cargo_area_size');
+            $table->integer('wheel_count')->default(4);
+            $table->integer('cargo_area_size')->default(0);
             $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
             $table->timestamps();
         });
