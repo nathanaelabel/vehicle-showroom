@@ -21,6 +21,7 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'type' => 'required|in:Car,Motorcycle,Truck',
             'model' => 'required',
             'year' => 'required',
             'passenger_count' => 'required',
@@ -28,9 +29,21 @@ class VehicleController extends Controller
             'price' => 'required',
         ]);
 
-        Vehicle::create($request->all());
+        // Create the main vehicle record
+        $vehicle = Vehicle::create($request->only(['type', 'model', 'year', 'passenger_count', 'manufacturer', 'price']));
+
+        // Create the specific type record based on the selected type
+        if ($request->type === 'Car') {
+            $vehicle->car()->create($request->only(['fuel_type', 'trunk_size_car']));
+        } elseif ($request->type === 'Motorcycle') {
+            $vehicle->motorcycle()->create($request->only(['trunk_size_motorcycle', 'fuel_capacity']));
+        } elseif ($request->type === 'Truck') {
+            $vehicle->truck()->create($request->only(['wheel_count', 'cargo_area_size']));
+        }
+
         return redirect()->route('vehicles.index')->with('success', 'Vehicle created successfully');
     }
+
 
     public function show(Vehicle $vehicle)
     {
@@ -52,7 +65,18 @@ class VehicleController extends Controller
             'price' => 'required',
         ]);
 
-        $vehicle->update($request->all());
+        // Update the main vehicle record
+        $vehicle->update($request->only(['model', 'year', 'passenger_count', 'manufacturer', 'price']));
+
+        // Update the specific type record based on the selected type
+        if ($vehicle->type === 'Car') {
+            $vehicle->car->update($request->only(['fuel_type', 'trunk_size_car']));
+        } elseif ($vehicle->type === 'Motorcycle') {
+            $vehicle->motorcycle->update($request->only(['trunk_size_motorcycle', 'fuel_capacity']));
+        } elseif ($vehicle->type === 'Truck') {
+            $vehicle->truck->update($request->only(['wheel_count', 'cargo_area_size']));
+        }
+
         return redirect()->route('vehicles.index')->with('success', 'Vehicle updated successfully');
     }
 

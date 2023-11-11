@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id('car_id');
-            $table->string('fuel_type');
-            $table->float('trunk_size');
+            $table->string('fuel_type')->default('Gasoline');
+            $table->float('trunk_size_car')->default(0);
             $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
             $table->timestamps();
         });
