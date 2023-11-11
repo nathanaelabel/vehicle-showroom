@@ -65,5 +65,17 @@
                 </tr>
             @endif
         </table>
+
+        <div class="mt-3">
+            <a href="{{ route('vehicles.edit', $vehicle->vehicle_id) }}" class="btn btn-warning">Edit</a>
+
+            <form action="{{ route('vehicles.destroy', $vehicle->vehicle_id) }}" method="POST"
+                style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want to delete this vehicle?')">Delete</button>
+            </form>
+        </div>
     </div>
 @endsection

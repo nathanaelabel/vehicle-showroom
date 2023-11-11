@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Vehicle;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -15,7 +17,10 @@ class OrderController extends Controller
 
     public function create()
     {
-        return view('orders.create');
+        $customers = Customer::all();
+        $vehicles = Vehicle::all();
+
+        return view('orders.create', compact('customers', 'vehicles'));
     }
 
     public function store(Request $request)
@@ -36,8 +41,12 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        return view('orders.edit', compact('order'));
+        $customers = Customer::all();
+        $vehicles = Vehicle::all();
+
+        return view('orders.edit', compact('order', 'customers', 'vehicles'));
     }
+
 
     public function update(Request $request, Order $order)
     {

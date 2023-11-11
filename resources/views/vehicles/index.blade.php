@@ -32,15 +32,15 @@
                         <td>{{ $vehicle->price }}</td>
                         <td>
                             <a href="{{ route('vehicles.show', $vehicle->vehicle_id) }}"
-                                class="btn btn-primary btn-sm">Show</a>
-
+                                class="btn btn-primary btn-sm">View</a>
                             <a href="{{ route('vehicles.edit', $vehicle->vehicle_id) }}" class="btn btn-info btn-sm">Edit</a>
 
                             <form action="{{ route('vehicles.destroy', $vehicle->vehicle_id) }}" method="POST"
                                 class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete this order?')">Delete</button>
                             </form>
                         </td>
                     </tr>

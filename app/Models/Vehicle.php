@@ -10,7 +10,7 @@ class Vehicle extends Model
     protected $fillable = ['type', 'model', 'year', 'passenger_count', 'manufacturer', 'price'];
 
     // Define relationships
-    public function orders()
+    public function order()
     {
         return $this->hasMany(Order::class);
     }
