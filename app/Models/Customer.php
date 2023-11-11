@@ -10,7 +10,7 @@ class Customer extends Model
     protected $fillable = ['name', 'address', 'phone_number', 'id_card'];
 
     // Define relationships
-    public function orders()
+    public function order()
     {
         return $this->hasMany(Order::class);
     }
