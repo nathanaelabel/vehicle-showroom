@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('motorcycle_id');
             $table->float('trunk_size_motorcycle')->default(0);
             $table->float('fuel_capacity')->default(1);
-            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
+            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
