@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trucks', function (Blueprint $table) {
-            $table->id('vehicle_id')->unique(); // Unique constraint for shared primary key
+            $table->id('truck_id');
             $table->integer('wheel_count');
             $table->integer('cargo_area_size');
+            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
             $table->timestamps();
         });
     }
