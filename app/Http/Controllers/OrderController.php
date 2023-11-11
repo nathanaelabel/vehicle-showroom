@@ -22,10 +22,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'customer_id' => 'required',
-            'car_id' => 'required',
-            'motorcycle_id' => 'required',
-            'truck_id' => 'required',
-            'total_cost' => 'required',
+            'vehicle_id' => 'required',
         ]);
 
         Order::create($request->all());
@@ -46,10 +43,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'customer_id' => 'required',
-            'car_id' => 'required',
-            'motorcycle_id' => 'required',
-            'truck_id' => 'required',
-            'total_cost' => 'required',
+            'vehicle_id' => 'required',
         ]);
 
         $order->update($request->all());
