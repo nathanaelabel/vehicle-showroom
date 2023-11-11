@@ -15,18 +15,18 @@ class Vehicle extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function cars()
+    public function car()
     {
-        return $this->hasMany(Car::class);
+        return $this->hasOne(Car::class, 'vehicle_id', 'vehicle_id');
     }
 
-    public function motorcycles()
+    public function motorcycle()
     {
-        return $this->hasMany(Motorcycle::class);
+        return $this->hasOne(Motorcycle::class, 'vehicle_id', 'vehicle_id');
     }
 
-    public function trucks()
+    public function truck()
     {
-        return $this->hasMany(Truck::class);
+        return $this->hasOne(Truck::class, 'vehicle_id', 'vehicle_id');
     }
 }
