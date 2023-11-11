@@ -26,6 +26,5 @@ Route::resource('motorcycles', MotorcycleController::class);
 Route::resource('trucks', TruckController::class);
 Route::resource('orders', OrderController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Update the root URL route to redirect to the customer index
+Route::redirect('/', '/customers');
