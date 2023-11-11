@@ -65,7 +65,18 @@ class VehicleController extends Controller
             'price' => 'required',
         ]);
 
-        $vehicle->update($request->all());
+        // Update the main vehicle record
+        $vehicle->update($request->only(['model', 'year', 'passenger_count', 'manufacturer', 'price']));
+
+        // Update the specific type record based on the selected type
+        if ($vehicle->type === 'Car') {
+            $vehicle->car->update($request->only(['fuel_type', 'trunk_size_car']));
+        } elseif ($vehicle->type === 'Motorcycle') {
+            $vehicle->motorcycle->update($request->only(['trunk_size_motorcycle', 'fuel_capacity']));
+        } elseif ($vehicle->type === 'Truck') {
+            $vehicle->truck->update($request->only(['wheel_count', 'cargo_area_size']));
+        }
+
         return redirect()->route('vehicles.index')->with('success', 'Vehicle updated successfully');
     }
 
