@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('motorcycles', function (Blueprint $table) {
             $table->id('vehicle_id')->unique(); // Unique constraint for shared primary key
-            $table->integer('trunk_size');
-            $table->integer('fuel_capacity');
+            $table->float('trunk_size');
+            $table->float('fuel_capacity');
             $table->timestamps();
         });
     }

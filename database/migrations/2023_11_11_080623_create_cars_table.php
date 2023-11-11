@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id('vehicle_id')->unique(); // Unique constraint for shared primary key
             $table->string('fuel_type');
-            $table->integer('trunk_size');
+            $table->float('trunk_size');
             $table->timestamps();
         });
     }
