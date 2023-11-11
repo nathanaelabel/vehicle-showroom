@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('truck_id');
             $table->integer('wheel_count')->default(4);
             $table->integer('cargo_area_size')->default(0);
-            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
+            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
