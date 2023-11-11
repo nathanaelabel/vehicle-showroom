@@ -33,7 +33,6 @@
                         <td>
                             <a href="{{ route('vehicles.show', $vehicle->vehicle_id) }}"
                                 class="btn btn-primary btn-sm">View</a>
-
                             <a href="{{ route('vehicles.edit', $vehicle->vehicle_id) }}" class="btn btn-info btn-sm">Edit</a>
 
                             <form action="{{ route('vehicles.destroy', $vehicle->vehicle_id) }}" method="POST"
