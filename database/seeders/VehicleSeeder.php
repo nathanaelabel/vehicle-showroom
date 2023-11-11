@@ -17,12 +17,12 @@ class VehicleSeeder extends Seeder
         // Seed Vehicles
         for ($i = 0; $i < 10; $i++) {
             // Determine the type of the vehicle
-            $type = $faker->randomElement(['car', 'motorcycle', 'truck']);
+            $type = $faker->randomElement(['Car', 'Motorcycle', 'Truck']);
 
             $vehicle = Vehicle::create([
                 'model' => $faker->word,
                 'year' => $faker->year,
-                'passenger_count' => $faker->numberBetween(2, 8),
+                'passenger_count' => $faker->numberBetween(2, 6),
                 'manufacturer' => $faker->company,
                 'price' => $faker->randomFloat(2, 10000, 50000),
                 'type' => $type, // Set the type here
@@ -38,25 +38,25 @@ class VehicleSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // Seed Car
-        if ($vehicle->type == 'car') {
+        if ($vehicle->type == 'Car') {
             Car::create([
                 'fuel_type' => $faker->randomElement(['Gasoline', 'Diesel', 'Electric']),
-                'trunk_size' => $faker->randomFloat(2, 10, 30),
+                'trunk_size_car' => $faker->randomFloat(2, 10, 30),
                 'vehicle_id' => $vehicle->vehicle_id,
             ]);
         }
 
         // Seed Motorcycle
-        if ($vehicle->type == 'motorcycle') {
+        if ($vehicle->type == 'Motorcycle') {
             Motorcycle::create([
-                'trunk_size' => $faker->randomFloat(2, 1, 5),
+                'trunk_size_motorcycle' => $faker->randomFloat(2, 1, 5),
                 'fuel_capacity' => $faker->randomFloat(2, 5, 20),
                 'vehicle_id' => $vehicle->vehicle_id,
             ]);
         }
 
         // Seed Truck
-        if ($vehicle->type == 'truck') {
+        if ($vehicle->type == 'Truck') {
             Truck::create([
                 'wheel_count' => $faker->numberBetween(4, 18),
                 'cargo_area_size' => $faker->randomFloat(2, 50, 200),

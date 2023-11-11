@@ -5,7 +5,7 @@ namespace App\Models;
 class Motorcycle extends Vehicle
 {
     protected $primaryKey = 'motorcycle_id';
-    protected $fillable = ['trunk_size', 'fuel_capacity'];
+    protected $fillable = ['trunk_size_motorcycle', 'fuel_capacity'];
 
     // Define relationships
     public function vehicle()
