@@ -14,7 +14,7 @@ class CustomerSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        // Seed Customers
+        // Create 10 dummy customers
         for ($i = 0; $i < 10; $i++) {
             Customer::create([
                 'name' => $faker->name,

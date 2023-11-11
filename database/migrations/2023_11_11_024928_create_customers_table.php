@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create customers table schema for the Customer model.
         Schema::create('customers', function (Blueprint $table) {
             $table->id('customer_id');
             $table->string('name');

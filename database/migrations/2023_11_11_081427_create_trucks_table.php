@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create trucks table schema for the Truck model.
         Schema::create('trucks', function (Blueprint $table) {
             $table->id('truck_id');
             $table->integer('wheel_count')->default(4);

@@ -7,19 +7,36 @@ use App\Models\Vehicle;
 
 class VehicleController extends Controller
 {
+    /**
+     * Display a listing of the vehicles.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $vehicles = Vehicle::all();
         return view('vehicles.index', compact('vehicles'));
     }
 
+    /**
+     * Show the form for creating a new vehicle.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         return view('vehicles.create');
     }
 
+    /**
+     * Store a newly created vehicle in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
+        // Validates and stores a newly created vehicle in the database.
         $request->validate([
             'type' => 'required|in:Car,Motorcycle,Truck',
             'model' => 'required',
@@ -41,22 +58,42 @@ class VehicleController extends Controller
             $vehicle->truck()->create($request->only(['wheel_count', 'cargo_area_size']));
         }
 
+        // Redirect to the index page with a success message
         return redirect()->route('vehicles.index')->with('success', 'Vehicle created successfully');
     }
 
-
+    /**
+     * Display the specified vehicle.
+     *
+     * @param  \App\Models\Vehicle  $vehicle
+     * @return \Illuminate\View\View
+     */
     public function show(Vehicle $vehicle)
     {
         return view('vehicles.show', compact('vehicle'));
     }
 
+    /**
+     * Show the form for editing the specified vehicle.
+     *
+     * @param  \App\Models\Vehicle  $vehicle
+     * @return \Illuminate\View\View
+     */
     public function edit(Vehicle $vehicle)
     {
         return view('vehicles.edit', compact('vehicle'));
     }
 
+    /**
+     * Update the specified vehicle in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Vehicle  $vehicle
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, Vehicle $vehicle)
     {
+        // Validates and updates the specified vehicle in the database.
         $request->validate([
             'model' => 'required',
             'year' => 'required',
@@ -80,8 +117,15 @@ class VehicleController extends Controller
         return redirect()->route('vehicles.index')->with('success', 'Vehicle updated successfully');
     }
 
+    /**
+     * Remove the specified vehicle from the database.
+     *
+     * @param  \App\Models\Vehicle  $vehicle
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Vehicle $vehicle)
     {
+        // Deletes a specific vehicle from the database.
         $vehicle->delete();
         return redirect()->route('vehicles.index')->with('success', 'Vehicle deleted successfully');
     }

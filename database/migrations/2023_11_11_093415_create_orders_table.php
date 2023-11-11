@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create orders table schema for the Order model.
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->foreignId('customer_id')->constrained('customers', 'customer_id')->onUpdate('cascade')->onDelete('cascade');

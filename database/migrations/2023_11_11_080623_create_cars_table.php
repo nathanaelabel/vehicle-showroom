@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create cars table schema for the Car model.
         Schema::create('cars', function (Blueprint $table) {
             $table->id('car_id');
             $table->string('fuel_type')->default('Gasoline');
