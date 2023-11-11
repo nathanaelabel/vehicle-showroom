@@ -19,6 +19,7 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::resource('customers', CustomerController::class);
+Route::resource('vehicles', VehicleController::class);
 Route::resource('cars', CarController::class);
 Route::resource('motorcycles', MotorcycleController::class);
 Route::resource('trucks', TruckController::class);
