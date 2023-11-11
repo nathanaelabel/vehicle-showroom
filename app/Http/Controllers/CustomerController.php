@@ -3,60 +3,54 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Order;
 
-class CustomerController extends Controller
+class OrderController extends Controller
 {
     public function index()
     {
-        $customers = Customer::all();
-        return view('customers.index', compact('customers'));
+        $orders = Order::all();
+        return view('orders.index', compact('orders'));
     }
 
     public function create()
     {
-        return view('customers.create');
+        return view('orders.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
-            'id_card' => 'required',
+            'customer_id' => 'required',
         ]);
 
-        Customer::create($request->all());
-        return redirect()->route('customers.index')->with('success', 'Customer created successfully');
+        Order::create($request->all());
+        return redirect()->route('orders.index')->with('success', 'Order created successfully');
     }
 
-    public function show(Customer $customer)
+    public function show(Order $order)
     {
-        return view('customers.show', compact('customer'));
+        return view('orders.show', compact('order'));
     }
 
-    public function edit(Customer $customer)
+    public function edit(Order $order)
     {
-        return view('customers.edit', compact('customer'));
+        return view('orders.edit', compact('order'));
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Order $order)
     {
         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
-            'id_card' => 'required',
+            'customer_id' => 'required',
         ]);
 
-        $customer->update($request->all());
-        return redirect()->route('customers.index')->with('success', 'Customer updated successfully');
+        $order->update($request->all());
+        return redirect()->route('orders.index')->with('success', 'Order updated successfully');
     }
 
-    public function destroy(Customer $customer)
+    public function destroy(Order $order)
     {
-        $customer->delete();
-        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully');
+        $order->delete();
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully');
     }
 }

@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Car extends Model
+class Car extends Vehicle
 {
-    protected $fillable = ['model', 'year', 'passenger_count', 'manufacturer', 'price', 'fuel_type', 'trunk_size'];
+    protected $fillable = ['fuel_type', 'trunk_size'];
 
     // Define relationships
-    // A car can have many orders
-    public function orders()
+    public function vehicle()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Vehicle::class);
     }
 }

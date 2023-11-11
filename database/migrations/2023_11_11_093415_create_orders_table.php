@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('customer_id')->constrained();
-            $table->foreignId('car_id')->nullable()->constrained();
-            $table->foreignId('motorcycle_id')->nullable()->constrained();
-            $table->foreignId('truck_id')->nullable()->constrained();
-            $table->unsignedInteger('total_cost');
+            $table->id('order_id');
+            $table->foreignId('customer_id')->constrained('customers', 'customer_id');
+            $table->foreignId('vehicle_id')->constrained('vehicles', 'vehicle_id');
+            $table->timestamps();
         });
     }
 
