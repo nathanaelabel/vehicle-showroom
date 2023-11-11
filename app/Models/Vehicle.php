@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $primaryKey = 'vehicle_id';
-    protected $fillable = ['model', 'year', 'passenger_count', 'manufacturer', 'price'];
+    protected $fillable = ['type', 'model', 'year', 'passenger_count', 'manufacturer', 'price'];
 
     // Define relationships
     public function orders()
