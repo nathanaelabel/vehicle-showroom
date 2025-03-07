@@ -20,9 +20,9 @@ Vehicle Showroom is designed to **streamline vehicle sales operations**, includi
 ---
 
 ## 🛠️ Technologies Used  
-- **Frontend:** *(Specify if applicable)*  
-- **Backend:** *(Specify if applicable)*  
-- **Database:** *(Specify if applicable)*  
+- **Frontend:** Blade 
+- **Backend:** Laravel 
+- **Database:** MySQL   
 
 ---
 
